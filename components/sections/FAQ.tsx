@@ -13,7 +13,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-24 md:py-32 px-6 md:px-12 border-t border-ink/[0.06]">
+    <section id="faq" className="pt-32 sm:pt-36 pb-24 md:pb-32 px-6 md:px-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
         <motion.div {...revealOnScroll("-80px")} className="lg:col-span-5 space-y-5">
           <motion.div variants={fadeUp}>

@@ -30,10 +30,19 @@ export default function ImageSlot({
   sizes = "(min-width: 1024px) 50vw, 100vw",
 }: ImageSlotProps) {
   if (src && src.trim() !== "") {
+    const trimmed = src.trim();
+    const normalizedSrc =
+      trimmed.startsWith("/") ||
+      trimmed.startsWith("http://") ||
+      trimmed.startsWith("https://") ||
+      trimmed.startsWith("data:")
+        ? trimmed
+        : `/${trimmed}`;
+
     return (
       <div className={`relative overflow-hidden ${aspectClass} ${className}`}>
         <Image
-          src={src}
+          src={normalizedSrc}
           alt={alt}
           fill
           priority={priority}

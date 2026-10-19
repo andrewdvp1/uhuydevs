@@ -1,6 +1,7 @@
 "use client";
 
 import type { MouseEvent } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { fadeUp, revealOnScroll } from "@/lib/animations";
@@ -94,15 +95,15 @@ function ServiceCard({ service, featured }: { service: Service; featured: boolea
         </div>
       </div>
 
-      <a
-        href="#contact"
+      <Link
+        href="/contact"
         aria-label={`Diskusikan layanan ${title}`}
         className={`absolute top-8 right-8 lg:top-9 lg:right-9 w-10 h-10 rounded-full flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ${
           featured ? "bg-white text-ink" : "bg-ink text-white"
         }`}
       >
         <ArrowUpRight className="w-4 h-4" />
-      </a>
+      </Link>
     </motion.div>
   );
 }

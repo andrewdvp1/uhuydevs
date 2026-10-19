@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 type Variant = "primary" | "secondary" | "light" | "ghost-dark";
@@ -39,7 +40,7 @@ export default function Button({
   const withBubble = variant === "primary" || variant === "light";
 
   return (
-    <a href={href} onClick={onClick} className={`${base} ${variants[variant]} ${className}`}>
+    <Link href={href} onClick={onClick} className={`${base} ${variants[variant]} ${className}`}>
       <span>{children}</span>
       {icon !== "none" &&
         (withBubble ? (
@@ -59,7 +60,7 @@ export default function Button({
         ) : (
           <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         ))}
-    </a>
+    </Link>
   );
 }
 

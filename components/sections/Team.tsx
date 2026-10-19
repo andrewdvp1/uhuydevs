@@ -6,10 +6,10 @@ import { TEAM_FOOTER, TEAM_INTRO, TEAM_MEMBERS } from "@/content/site";
 import ImageSlot from "@/components/ui/ImageSlot";
 import SectionHeader from "@/components/ui/SectionHeader";
 
-/** Section Tim (kartu gelap di atas latar putih) */
+/** Section Tim (kartu gelap) */
 export default function Team() {
   return (
-    <section id="team" className="bg-white px-3 sm:px-4 pb-4">
+    <section id="team" className="pt-28 sm:pt-32 pb-16 md:pb-24 px-3 sm:px-4">
       <div className="relative overflow-hidden rounded-[32px] md:rounded-[48px] bg-night text-white py-24 md:py-32 px-6 md:px-12">
         {/* Latar dekoratif */}
         <div className="absolute inset-0 bg-grid-dark mask-radial pointer-events-none" aria-hidden />

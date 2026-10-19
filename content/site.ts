@@ -43,9 +43,9 @@ export const SITE = {
 // Contoh: "/images/hero-terrarium.jpg" (simpan file di folder /public)
 // ----------------------------------------------------------------------------
 export const IMAGE_PATHS = {
-  heroImage: "screen2.png", // TODO: Masukkan path gambar Hero (Terrarium tanaman)
+  heroImage: "/screen2.png", // TODO: Masukkan path gambar Hero (Terrarium tanaman)
   projects: {
-    verdant: "verdant.png", // TODO: Masukkan path gambar proyek utama "Verdant"
+    verdant: "/verdant.png", // TODO: Masukkan path gambar proyek utama "Verdant"
   },
   team: {
     christ: "/dio.jpg", // TODO: Masukkan path foto anggota tim 1
@@ -64,16 +64,15 @@ export interface NavLink {
 }
 
 export const NAV_LINKS: NavLink[] = [
-  { label: "Layanan", href: "#services" },
-  { label: "Karya", href: "#work" },
-  { label: "Studio", href: "#team" },
-  { label: "Proses", href: "#process" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Layanan", href: "/#services" },
+  { label: "Karya", href: "/work" },
+  { label: "Studio", href: "/studio" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 export const NAV_CTA = {
   label: "Mulai Proyek",
-  href: "#contact",
+  href: "/contact",
 };
 
 // ----------------------------------------------------------------------------
@@ -84,8 +83,8 @@ export const HERO = {
   titleLines: ["Ide cemerlang.", "Akar yang *kuat.*", "Digital lebih *baik.*"],
   description:
     "Studio desain dan rekayasa perangkat lunak yang merancang situs web. Serta produk digital yang tenang, tangguh, dan berorientasi pada pertumbuhan jangka panjang bisnis.",
-  primaryCta: { label: "Mulai proyek bersama", href: "#contact" },
-  secondaryCta: { label: "Lihat studi kasus", href: "#work" },
+  primaryCta: { label: "Mulai proyek bersama", href: "/contact" },
+  secondaryCta: { label: "Lihat studi kasus", href: "/work" },
   image: {
     src: IMAGE_PATHS.heroImage,
     hint: "IMAGE_PATHS.heroImage",
@@ -253,7 +252,7 @@ export const FEATURED_PROJECT: FeaturedProject = {
     author: "Nadia Pratama",
     role: "Founder, Verdant Co.",
   },
-  link: { label: "Diskusikan proyek serupa", href: "#contact" },
+  link: { label: "Diskusikan proyek serupa", href: "/contact" },
 };
 
 // ----------------------------------------------------------------------------
@@ -464,19 +463,20 @@ export const FOOTER = {
     {
       title: "Navigasi",
       links: [
-        { label: "Layanan", href: "#services" },
-        { label: "Karya", href: "#work" },
-        { label: "Studio", href: "#team" },
-        { label: "Proses", href: "#process" },
+        { label: "Layanan", href: "/#services" },
+        { label: "Proses", href: "/#process" },
+        { label: "Karya", href: "/work" },
+        { label: "Studio", href: "/studio" },
+        { label: "FAQ", href: "/faq" },
       ],
     },
     {
       title: "Layanan",
       links: [
-        { label: "Pengalaman Web", href: "#services" },
-        { label: "Produk Digital", href: "#services" },
-        { label: "Design System", href: "#services" },
-        { label: "Konsultasi", href: "#contact" },
+        { label: "Pengalaman Web", href: "/#services" },
+        { label: "Produk Digital", href: "/#services" },
+        { label: "Design System", href: "/#services" },
+        { label: "Konsultasi", href: "/contact" },
       ],
     },
   ],

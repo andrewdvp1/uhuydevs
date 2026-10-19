@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { NAV_CTA, NAV_LINKS, SITE } from "@/content/site";
 
 export function Logo({ dark = false }: { dark?: boolean }) {
   return (
-    <a href="#" className="flex items-center gap-2.5 group" aria-label={`${SITE.name} — beranda`}>
+    <Link href="/" className="flex items-center gap-2.5 group" aria-label={`${SITE.name} — beranda`}>
       {/* Jika ingin menggunakan gambar logo */}
       <Image
         src={SITE.logo ?? "/logo.svg"}
@@ -20,40 +22,51 @@ export function Logo({ dark = false }: { dark?: boolean }) {
       <span className={`font-bold text-[17px] tracking-tight ${dark ? "text-white" : "text-ink"}`}>
         {SITE.name}
       </span>
-    </a>
+    </Link>
   );
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeHref, setActiveHref] = useState<string>("");
+  const [sectionHref, setSectionHref] = useState<string>("");
 
   // Ubah tampilan navbar ketika halaman di-scroll
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 12);
+      if (pathname === "/" && window.scrollY < 240) {
+        setSectionHref("");
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
-  // Sorot tautan sesuai section yang sedang terlihat
+  // Sorot tautan sesuai section yang sedang terlihat di halaman Beranda (/)
   useEffect(() => {
-    const sections = NAV_LINKS.map((l) => document.querySelector(l.href)).filter(
-      (el): el is Element => el !== null
-    );
+    if (pathname !== "/") return;
+
+    const hashLinks = NAV_LINKS.filter((l) => l.href.startsWith("/#"));
+    const sections = hashLinks
+      .map((l) => document.querySelector(l.href.slice(1)))
+      .filter((el): el is Element => el !== null);
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveHref(`#${entry.target.id}`);
+          if (entry.isIntersecting) setSectionHref(`/#${entry.target.id}`);
         });
       },
       { rootMargin: "-45% 0px -50% 0px" }
     );
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
+  const activeHref = pathname === "/" ? sectionHref : pathname;
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
@@ -72,7 +85,7 @@ export default function Navbar() {
           {NAV_LINKS.map((link) => {
             const active = activeHref === link.href;
             return (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className={`relative px-4 py-2 rounded-full text-[13px] font-medium transition-colors ${
@@ -87,15 +100,17 @@ export default function Navbar() {
                   />
                 )}
                 <span className="relative">{link.label}</span>
-              </a>
+              </Link>
             );
           })}
         </nav>
 
         {/* CTA Kanan (Desktop) */}
-        <a
+        <Link
           href={NAV_CTA.href}
-          className="hidden md:inline-flex items-center gap-2 bg-ink hover:bg-brand text-white text-[13px] font-semibold pl-4 pr-3 py-2.5 rounded-full transition-colors duration-300 group"
+          className={`hidden md:inline-flex items-center gap-2 text-white text-[13px] font-semibold pl-4 pr-3 py-2.5 rounded-full transition-colors duration-300 group ${
+            pathname === NAV_CTA.href ? "bg-brand" : "bg-ink hover:bg-brand"
+          }`}
         >
           <span className="relative flex w-2 h-2">
             <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
@@ -103,7 +118,7 @@ export default function Navbar() {
           </span>
           {NAV_CTA.label}
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-        </a>
+        </Link>
 
         {/* Tombol Menu Mobile */}
         <button
@@ -127,7 +142,7 @@ export default function Navbar() {
             className="md:hidden mt-2 mx-auto max-w-7xl rounded-3xl bg-white/95 backdrop-blur-xl ring-1 ring-ink/[0.07] shadow-xl p-3"
           >
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={closeMenu}
@@ -135,16 +150,16 @@ export default function Navbar() {
               >
                 {link.label}
                 <ArrowRight className="w-4 h-4 text-ink/30" />
-              </a>
+              </Link>
             ))}
-            <a
+            <Link
               href={NAV_CTA.href}
               onClick={closeMenu}
               className="mt-2 flex items-center justify-center gap-2 bg-brand text-white text-sm font-semibold px-4 py-3.5 rounded-2xl"
             >
               {NAV_CTA.label}
               <ArrowRight className="w-4 h-4" />
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

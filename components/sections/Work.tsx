@@ -14,7 +14,7 @@ export default function Work() {
   return (
     <section
       id="work"
-      className="relative bg-white py-24 md:py-32 px-6 md:px-12 rounded-t-[40px] md:rounded-t-[56px] ring-1 ring-ink/[0.05]"
+      className="relative mt-24 sm:mt-28 bg-white py-20 md:py-28 px-6 md:px-12 rounded-t-[40px] md:rounded-t-[56px] ring-1 ring-ink/[0.05]"
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeader {...WORK_INTRO} className="mb-14 md:mb-16" />

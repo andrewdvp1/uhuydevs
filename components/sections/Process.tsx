@@ -8,7 +8,10 @@ import SectionHeader from "@/components/ui/SectionHeader";
 /** Section Proses Kerja — linimasa 4 tahap */
 export default function Process() {
   return (
-    <section id="process" className="bg-white py-24 md:py-32 px-6 md:px-12">
+    <section
+      id="process"
+      className="relative bg-white py-24 md:py-32 px-6 md:px-12 rounded-t-[40px] md:rounded-t-[56px] ring-1 ring-ink/[0.05]"
+    >
       <div className="max-w-7xl mx-auto">
         <SectionHeader {...PROCESS_INTRO} className="mb-16 md:mb-20" />
 

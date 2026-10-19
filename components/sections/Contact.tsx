@@ -14,7 +14,7 @@ const inputClass =
 /** Section Kontak — kartu biru brand dengan form */
 export default function Contact() {
   return (
-    <section id="contact" className="px-3 sm:px-4 pb-24 md:pb-32">
+    <section id="contact" className="pt-28 sm:pt-32 px-3 sm:px-4 pb-24 md:pb-32">
       <div className="relative overflow-hidden max-w-7xl mx-auto rounded-[32px] md:rounded-[48px] bg-brand text-white p-6 sm:p-10 lg:p-16">
         {/* Latar dekoratif */}
         <div className="absolute inset-0 bg-grid-dark pointer-events-none opacity-70" aria-hidden />

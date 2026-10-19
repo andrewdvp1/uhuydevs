@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import { FOOTER, NAV_CTA, SITE } from "@/content/site";
 import Lines from "@/components/ui/Lines";
@@ -47,9 +48,9 @@ export default function Footer() {
               <ul className="mt-5 space-y-3">
                 {col.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                    <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
                       {link.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
