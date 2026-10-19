@@ -346,7 +346,7 @@ export default async function Image() {
               color: "#2448f5",
             }}
           >
-            my-portofolio-uhuy.vercel.app
+            uhuydevs.vercel.app
           </span>
         </div>
       </div>

@@ -23,7 +23,7 @@ const mono = JetBrains_Mono({
 
 import { SITE, SERVICES, FAQS, TEAM_MEMBERS } from "@/content/site";
 
-const SITE_URL = "https://my-portofolio-uhuy.vercel.app";
+const SITE_URL = "https://uhuydevs.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
