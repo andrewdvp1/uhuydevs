@@ -23,7 +23,20 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Content-Type",
-            value: "application/xml; charset=utf-8",
+            value: "text/xml; charset=utf-8",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=3600",
+          },
+        ],
+      },
+      {
+        source: "/sitemap.xsl",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "text/xml; charset=utf-8",
           },
           {
             key: "Cache-Control",
